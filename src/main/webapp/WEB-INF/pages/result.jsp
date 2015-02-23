@@ -5,20 +5,31 @@
 </head>
 <body>
 
-<h2>Submitted Customer Information</h2>
-<table>
+<h2>Customer Information</h2>
+<c:forEach var="customer" items="${customerList}" varStatus="status">
     <tr>
-        <td>Name : </td>
-        <td>${name}</td>
+        <td>${status.index+1}</td>
     </tr>
     <tr>
-        <td>Surname : </td>
-        <td>${surname}</td>
+        <td>Name : ${customer.name}</td>
     </tr>
     <tr>
-        <td>Age : </td>
-        <td>${age}</td>
+        <td>Surname : ${customer.surname}</td>
     </tr>
-</table>
+    <tr>
+        <td>Age : ${customer.age}</td>
+    </tr>
+    <tr>
+        <td>
+            <a href="/editContact?id=${customer.id}">Edit</a><br/>
+        </td>
+        <td>
+            <a href="/deleteContact?id=${customer.id}">Delete</a>
+        </td>
+    </tr>
+</c:forEach>
+<br/>
+<a href="/addcustomer">Add Customer</a>
+
 </body>
 </html>

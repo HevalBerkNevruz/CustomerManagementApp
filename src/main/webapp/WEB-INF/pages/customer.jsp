@@ -5,9 +5,10 @@
 </head>
 <body>
 
-<h2>Customer Information</h2>
+<h2>Customer Add</h2>
 <form:form method="POST" action="/SpringMVCFirstProject/addcustomer">
     <table>
+        <form:hidden path="id"/>
         <tr>
             <td><form:label path="name">Name</form:label></td>
             <td><form:input path="name" /></td>
