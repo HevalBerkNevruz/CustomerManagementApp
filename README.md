@@ -2,5 +2,6 @@
 Technologies Used;
 * Spring
 * Spring MVC
+* JSP
 * JdbcTemplate
 * Mysql
