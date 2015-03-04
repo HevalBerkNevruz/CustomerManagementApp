@@ -6,7 +6,7 @@
 <body>
 
 <h2>Customer Add</h2>
-<form:form method="POST" action="/SpringMVCFirstProject/addcustomer">
+<form:form method="POST" action="/SpringMVCFirstProject/savecustomer" modelAttribute="customer">
     <table>
         <form:hidden path="id"/>
         <tr>
