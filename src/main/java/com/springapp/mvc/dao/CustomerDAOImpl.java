@@ -26,8 +26,8 @@ public class CustomerDAOImpl implements ICustomerDAO {
     @Override
     public void insertOrUpdateCustomer(Customer customer) {
         if(customer.getId()>0){
-            String sqlQuery="UPDATE CUSTOMER SET NAME=?,"+"SET SURNAME=?,SET AGE=? WHERE ID=?";
-            jdbcTemplate.update(sqlQuery,customer.getName(),customer.getSurname(),customer.getAge());
+            String sqlQuery="UPDATE CUSTOMER SET NAME=?,"+"SURNAME=?,AGE=? WHERE ID=?";
+            jdbcTemplate.update(sqlQuery,customer.getName(),customer.getSurname(),customer.getAge(),customer.getId());
         }else{
             String sqlQuery="INSERT INTO CUSTOMER(NAME,SURNAME,AGE)"+"VALUES(?,?,?)";
             jdbcTemplate.update(sqlQuery,customer.getName(),customer.getSurname(),customer.getAge());
@@ -48,10 +48,10 @@ public class CustomerDAOImpl implements ICustomerDAO {
             public Customer extractData(ResultSet resultSet) throws SQLException, DataAccessException {
                 if(resultSet.next()) {
                     Customer customer=new Customer();
-                    customer.setId(customer.getId());
-                    customer.setName(customer.getName());
-                    customer.setSurname(customer.getSurname());
-                    customer.setAge(customer.getAge());
+                    customer.setId(resultSet.getInt("id"));
+                    customer.setName(resultSet.getString("name"));
+                    customer.setSurname(resultSet.getString("surname"));
+                    customer.setAge(resultSet.getInt("age"));
                     return customer;
                 }
                 return null;
@@ -67,10 +67,10 @@ public class CustomerDAOImpl implements ICustomerDAO {
             @Override
             public Customer mapRow(ResultSet resultSet,int rowNumber) throws SQLException {
                 Customer customer=new Customer();
-                customer.setId(customer.getId());
-                customer.setName(customer.getName());
-                customer.setSurname(customer.getSurname());
-                customer.setAge(customer.getAge());
+                customer.setId(resultSet.getInt("id"));
+                customer.setName(resultSet.getString("name"));
+                customer.setSurname(resultSet.getString("surname"));
+                customer.setAge(resultSet.getInt("age"));
                 return customer;
             }
         });
