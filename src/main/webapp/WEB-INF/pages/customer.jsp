@@ -6,6 +6,11 @@
 <body>
 
 <h2>Customer Add</h2>
+<a href="<c:url value='/j_spring_security_logout' />" > Logout</a>
+<form action="${logoutUrl}" method="post" id="logoutForm">
+    <input type="hidden" name="${_csrf.parameterName}"
+           value="${_csrf.token}" />
+</form>
 <form:form method="POST" action="/SpringMVCFirstProject/savecustomer" modelAttribute="customer">
     <table>
         <form:hidden path="id"/>
