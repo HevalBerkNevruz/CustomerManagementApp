@@ -9,6 +9,7 @@
 
     <properties>
         <spring.version>4.1.1.RELEASE</spring.version>
+        <spring.security.version>3.2.6.RELEASE</spring.security.version>
     </properties>
 
     <dependencies>
@@ -59,6 +60,24 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.6</version>
@@ -75,6 +94,12 @@
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.9.5</version>
         </dependency>
 
     </dependencies>
