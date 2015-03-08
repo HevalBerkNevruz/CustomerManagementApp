@@ -26,11 +26,11 @@ public class CustomerDAOImpl implements ICustomerDAO {
     @Override
     public void insertOrUpdateCustomer(Customer customer) {
         if(customer.getId()>0){
-            String sqlQuery="UPDATE CUSTOMER SET NAME=?,"+"SURNAME=?,AGE=? WHERE ID=?";
-            jdbcTemplate.update(sqlQuery,customer.getName(),customer.getSurname(),customer.getAge(),customer.getId());
+            String sqlQuery="UPDATE CUSTOMER SET NAME=?,"+"SURNAME=?,AGE=?,PASSWORD=? WHERE ID=?";
+            jdbcTemplate.update(sqlQuery,customer.getName(),customer.getSurname(),customer.getAge(),customer.getId(),customer.getPassword());
         }else{
-            String sqlQuery="INSERT INTO CUSTOMER(NAME,SURNAME,AGE)"+"VALUES(?,?,?)";
-            jdbcTemplate.update(sqlQuery,customer.getName(),customer.getSurname(),customer.getAge());
+            String sqlQuery="INSERT INTO CUSTOMER(NAME,SURNAME,AGE,PASSWORD)"+"VALUES(?,?,?,?)";
+            jdbcTemplate.update(sqlQuery,customer.getName(),customer.getSurname(),customer.getAge(),customer.getPassword());
         }
     }
 
