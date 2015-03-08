@@ -23,6 +23,10 @@
             <td><form:input path="surname" /></td>
         </tr>
         <tr>
+            <td><form:label path="password">password</form:label></td>
+            <td><form:password path="password" /></td>
+        </tr>
+        <tr>
             <td><form:label path="age">Age</form:label></td>
             <td><form:input path="age" /></td>
         </tr>
