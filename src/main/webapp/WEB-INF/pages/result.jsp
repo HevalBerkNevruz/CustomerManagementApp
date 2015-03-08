@@ -9,6 +9,7 @@
 <h2>Customer Information</h2>
 <a href="<c:url value='/j_spring_security_logout' />" > Logout</a>
 <table>
+    <c:forEach var="customer" items="${customerList}" varStatus="status">
         <tr>
             <td>${status.index+1}</td>
         </tr>
