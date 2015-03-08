@@ -5,18 +5,30 @@ package com.springapp.mvc.model;
  */
 public class Customer {
 
+    private long id;
     private String name;
     private String surname;
+    private String password;
     private int age;
 
     public Customer(){
 
     }
 
-    public Customer(String name, String surname, int age) {
+    public Customer(String name, String surname, int age,String password) {
         this.name = name;
         this.surname = surname;
         this.age = age;
+        this.password = password;
+    }
+
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -35,6 +47,14 @@ public class Customer {
         this.surname = surname;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public int getAge() {
         return age;
     }
@@ -42,4 +62,5 @@ public class Customer {
     public void setAge(int age) {
         this.age = age;
     }
+
 }
