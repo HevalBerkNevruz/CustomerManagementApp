@@ -22,7 +22,7 @@ public class CustomerController {
     @Autowired
     ICustomerDAO dao;
 
-    @RequestMapping(value = "/customer",method = RequestMethod.GET)
+    @RequestMapping(value = "/",method = RequestMethod.GET)
     public ModelAndView customerList(ModelAndView modelAndView) {
         List<Customer> customerList=dao.getCustomerList();
         modelAndView.addObject("customerList",customerList);
