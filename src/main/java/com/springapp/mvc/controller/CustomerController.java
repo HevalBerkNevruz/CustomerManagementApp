@@ -7,9 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -45,15 +45,13 @@ public class CustomerController {
     }
 
     @RequestMapping(value= "/deletecustomer",method = RequestMethod.GET)
-    public ModelAndView deleteCustomer(HttpServletRequest request){
-        int customerId=Integer.parseInt(request.getParameter("id"));
+    public ModelAndView deleteCustomer(@RequestParam("id") int customerId){
         service.deleteCustomer(customerId);
         return new ModelAndView("redirect:/");
     }
 
     @RequestMapping(value = "/editcustomer",method = RequestMethod.GET)
-    public ModelAndView editCustomer(HttpServletRequest request){
-        int customerId=Integer.parseInt(request.getParameter("id"));
+    public ModelAndView editCustomer(@RequestParam("id") int customerId){
         Customer customer=service.getCustomer(customerId);
         ModelAndView modelAndView=new ModelAndView("customer");
         modelAndView.addObject("customer",customer);
