@@ -1,7 +1,7 @@
 package com.springapp.mvc.controller;
 
-import com.springapp.mvc.dao.ICustomerDAO;
 import com.springapp.mvc.model.Customer;
+import com.springapp.mvc.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,11 +20,11 @@ import java.util.List;
 public class CustomerController {
 
     @Autowired
-    ICustomerDAO dao;
+    ICustomerService service;
 
     @RequestMapping(value = "/",method = RequestMethod.GET)
     public ModelAndView customerList(ModelAndView modelAndView) {
-        List<Customer> customerList=dao.getCustomerList();
+        List<Customer> customerList=service.getCustomerList();
         modelAndView.addObject("customerList",customerList);
         modelAndView.setViewName("result");
         return modelAndView;
@@ -40,21 +40,21 @@ public class CustomerController {
 
     @RequestMapping(value = "/savecustomer",method = RequestMethod.POST)
     public ModelAndView addCustomer(@ModelAttribute Customer customer){
-        dao.insertOrUpdateCustomer(customer);
+        service.insertOrUpdateCustomer(customer);
         return new ModelAndView("redirect:/");
     }
 
     @RequestMapping(value= "/deletecustomer",method = RequestMethod.GET)
     public ModelAndView deleteCustomer(HttpServletRequest request){
         int customerId=Integer.parseInt(request.getParameter("id"));
-        dao.delete(customerId);
+        service.deleteCustomer(customerId);
         return new ModelAndView("redirect:/");
     }
 
     @RequestMapping(value = "/editcustomer",method = RequestMethod.GET)
     public ModelAndView editCustomer(HttpServletRequest request){
         int customerId=Integer.parseInt(request.getParameter("id"));
-        Customer customer=dao.getCustomer(customerId);
+        Customer customer=service.getCustomer(customerId);
         ModelAndView modelAndView=new ModelAndView("customer");
         modelAndView.addObject("customer",customer);
         return modelAndView;
