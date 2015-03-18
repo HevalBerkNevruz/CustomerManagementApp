@@ -3,6 +3,7 @@ package com.springapp.mvc.config;
 import com.springapp.mvc.dao.CustomerDAOImpl;
 import com.springapp.mvc.dao.ICustomerDAO;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -15,6 +16,7 @@ import javax.sql.DataSource;
  * Created by heval-Computer on 23.2.2015.
  */
 @org.springframework.context.annotation.Configuration
+@ComponentScan("com.springapp.mvc")
 @EnableWebMvc
 public class MvcConfiguration extends WebMvcConfigurerAdapter{
 
