@@ -17,13 +17,13 @@ public class CustomerRestController {
     @Autowired
     ICustomerService service;
 
-    @RequestMapping(value = "/customer/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/customer/{id}", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody Customer getCustomer(@PathVariable int id){
         Customer customer=service.getCustomer(id);
         return customer;
     }
 
-    @RequestMapping(value = "customer/list", method = RequestMethod.GET)
+    @RequestMapping(value = "customer/list", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody List<Customer> getCustomerList(){
         List<Customer> customerList=service.getCustomerList();
         return customerList;
