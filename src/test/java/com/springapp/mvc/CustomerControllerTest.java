@@ -37,4 +37,12 @@ public class CustomerControllerTest {
                 .andExpect(view().name("result"))
                 .andExpect(forwardedUrl("/WEB-INF/pages/result.jsp"));
     }
+
+    @Test
+    public void test_new_customer() throws Exception{
+        mockMvc.perform(get("/newcustomer"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("customer"))
+                .andExpect(forwardedUrl("/WEB-INF/pages/customer.jsp"));
+    }
 }
