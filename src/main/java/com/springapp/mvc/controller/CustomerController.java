@@ -46,7 +46,7 @@ public class CustomerController {
             return new ModelAndView("customer");
         }else {
             service.insertOrUpdateCustomer(customer);
-            return new ModelAndView("result");
+            return new ModelAndView("redirect:/");
         }
     }
 
