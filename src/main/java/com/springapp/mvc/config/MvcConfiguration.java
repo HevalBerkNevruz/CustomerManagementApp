@@ -4,6 +4,7 @@ import com.springapp.mvc.dao.CustomerDAOImpl;
 import com.springapp.mvc.dao.ICustomerDAO;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -26,6 +27,13 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
         resolver.setPrefix("/WEB-INF/pages/");
         resolver.setSuffix(".jsp");
         return resolver;
+    }
+
+    @Bean
+    public ResourceBundleMessageSource getResourceBundle(){
+        ResourceBundleMessageSource messageSource=new ResourceBundleMessageSource();
+        messageSource.setBasename("messages");
+        return messageSource;
     }
 
     @Bean
