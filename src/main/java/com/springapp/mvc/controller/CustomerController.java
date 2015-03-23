@@ -4,12 +4,14 @@ import com.springapp.mvc.model.Customer;
 import com.springapp.mvc.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -39,9 +41,13 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "/savecustomer",method = RequestMethod.POST)
-    public ModelAndView addCustomer(@ModelAttribute Customer customer){
-        service.insertOrUpdateCustomer(customer);
-        return new ModelAndView("redirect:/");
+    public ModelAndView addCustomer(@ModelAttribute @Valid Customer customer,BindingResult result){
+        if(result.hasErrors()){
+            return new ModelAndView("customer");
+        }else {
+            service.insertOrUpdateCustomer(customer);
+            return new ModelAndView("result");
+        }
     }
 
     @RequestMapping(value= "/deletecustomer",method = RequestMethod.GET)
