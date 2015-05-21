@@ -1,4 +1,4 @@
-# CustomerManagementApp(Learning Project)
+# Customer Management
 Technologies Used;
 * Spring
 * Spring MVC
